@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+
+    <title>Simulating and Visualizing Schwarzschild Geometry</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <!-- 3D javascript /*{{{*/ -->
+
+    <script type="text/javascript" src="./js/canvasXpress.min.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+
+    <script id='demoScript'>
+
+      var showDemo = function () {
+        var i;
+        var varName = [];
+        var point = [];
+        var allPoints = [];
+        var count = 0;
+
+        
+        function readData()
+        {
+          d3.csv("demo.csv", function(data) {
+            data.forEach(function(d) {
+              point.push(d.xvalue);
+              point.push(d.yvalue);
+              point.push(d.zvalue);
+              allPoints.push(point);
+              count = count + 1;
+            });
+          });
+        }
+
+
+        for (i = 1; i < 10; i++) {
+          varName.push("'" + i + "'");
+        }
+
+
+        // readData();
+
+        var allPoints = [[0.666667, 0, 0.0],
+                        [0.666172, 0.0190515, 0.0],
+                        [0.665131, 0.0381127, 0.0],
+                        [0.663544, 0.0571299, 0.0],
+                        [0.661413, 0.0760874, 0.0],
+                        [0.65874, 0.0949697, 0.0],
+                        [0.655528, 0.113761, 0.0],
+                        [0.65178, 0.132447, 0.0],
+                        [0.647499, 0.151011, 0.0],
+                        [0.642689, 0.169438, 0.0]
+                    ]
+
+        var cx1 = new CanvasXpress('canvas1',
+          {
+            'y' : {
+              'vars' : varName,
+              'smps' : ['X-axis', 'Y-axis', 'Z-axis'],
+              'data' : allPoints
+            }
+          },
+          {
+            'graphType': 'Scatter3D',
+            //#4575b4','#91bfdb','#e0f3f8'
+            //(69,117,180)(145,191,219)(224,243,248)
+            'colors': ['rgb(145,191,219)'],
+            'xAxis': ['X Axis'],
+            'yAxis': ['Y Axis'],
+            'zAxis': ['Z Axis'],
+            'xAxisExact': true,
+            'yAxisExact': true,
+            'zAxisExact': true,
+            'setMinX': -0.8, 'setMaxX': 0.8,
+            'setMinY': -0.8, 'setMaxY': 0.8,
+            'setMinZ': -0.5, 'setMaxZ': 0.5,
+          }
+        );
+      }
+
+      var showCode = function (e, id) {
+        var cx = CanvasXpress.getObject(id)
+        cx.stopEvent(e);
+        cx.cancelEvent(e);
+        cx.updateCodeDiv(10000);
+        return false;
+      }
+
+    </script>
+    <!-- End 3D javascript /*}}}*/ -->
+
+  </head>
+
+
+  <body onload="showDemo();">
+
+    <div class="header">
+      <div  id="header-text">
+        <h1>Schwarzschild Geometry</h1>
+        <h3>Simulating and Visualizing</h3>
+      </div>
+    </div>
+
+    <div class="link">
+      <a href="./input.html">Trajectory</a>
+      <a href="./main.html">Home</a>
+      <a href="./image.html">Realistic Image</a>
+    </div>
+
+    <center>
+      <table width="800">
+        <tr><td>
+
+          <div id="Scatter3D">
+          <table class='example'>
+            <tr>
+              <td><canvas id='canvas1' width='800' height='800'></canvas></td>
+            </tr>
+          </table>
+          </div>
+
+          <p style="font-size:13px">
+          An interactive 3D plot showing the trajectory of a light particle around black hole, assume black hole is at (0, 0, 0)
+          </p>
+        
+        </td></tr>
+      </table>
+    </center>
+ 
+  </body>
+
+</html>

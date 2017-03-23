@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+
+    <title>Simulating and Visualizing Schwarzschild Geometry</title>
+
+    <meta http-equiv="CACHE-CONTROL" CONTENT="NO-CACHE">
+    <!-- Meta stuff   /*{{{*/ -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="canvasxpress, canvas, html5, scatter, 3d"/>
+    <meta name="description" content=""/>
+    <meta http-equiv="Content-Language" content="en-us" />
+    <meta name="Rating" content="general" />
+    <meta name="googlebot" content="index,follow" />
+    <meta name="robots" content="index,follow" />
+    <meta name="author" content="Dipankar Maitra, John Scarpaci" />
+    <!--  End meta /*}}}*/ -->
+
+    <!-- 3D javascript /*{{{*/ -->
+
+    <!--[if lt IE 9]><script type="text/javascript" src="./js/flashcanvas.js"></script><![endif]-->
+
+
+
+
+
+
+
+
+
+
+
+    <script type="text/javascript" src="./js/canvasXpress.min.js"></script>
+
+    <script id='demoScript'>
+
+
+      var showDemo = function () {
+
+        var cx1 = new CanvasXpress('canvas1',
+          {
+            'y' : {
+              'vars' : ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+              'smps' : ['X-axis', 'Y-axis', 'Z-axis'],
+              'data' : [[0.666667, 0, 0.0],
+                        [0.666172, 0.0190515, 0.0],
+                        [0.665131, 0.0381127, 0.0],
+                        [0.663544, 0.0571299, 0.0],
+                        [0.661413, 0.0760874, 0.0],
+                        [0.65874, 0.0949697, 0.0],
+                        [0.655528, 0.113761, 0.0],
+                        [0.65178, 0.132447, 0.0],
+                        [0.647499, 0.151011, 0.0],
+                        [0.642689, 0.169438, 0.0]
+                    ]
+            }
+          },
+          {'graphType': 'Scatter3D',
+          'xAxis': ['X Axis'],
+          'yAxis': ['Y Axis'],
+          'zAxis': ['Z Axis'],
+          'xAxisExact': true,
+          'yAxisExact': true,
+          'zAxisExact': true,
+          'setMinX': -0.8, 'setMaxX': 0.8,
+          'setMinY': -0.8, 'setMaxY': 0.8,
+          'setMinZ': -0.5, 'setMaxZ': 0.5,
+          
+          }
+        );
+      }
+
+      var showCode = function (e, id) {
+        var cx = CanvasXpress.getObject(id)
+        cx.stopEvent(e);
+        cx.cancelEvent(e);
+        cx.updateCodeDiv(10000);
+        return false;
+      }
+
+
+
+    </script>
+    <!-- End 3D javascript /*}}}*/ -->
+
+
+    <style>
+    h4 {text-align:center;}
+    pc {text-align:center;}
+    </style>
+
+  </head>
+
+
+
+
+
+  <body onload="showDemo();">
+
+
+
+    <h2>Simulating and Visualizing Schwarzschild Geometry</h1>
+
+    <h3>
+    Student: Caleb Wastler, Yiqing Cao<br>
+    Faculty advisor: Dipankar Maitra<br>
+    Project start/end: Jan 2017/continuing
+    </h3>
+
+    <div>
+    &nbsp;<br>
+    &nbsp;<br>
+    </div>
+
+
+    <h4>Introduction</h4> 
+    Simulating and Visualizing Schwarzschild Geometry is a software project with two separate sections each with different functions. The first program provides an interactive simulation of the behavior of light particles near a black hole, and the second program creates a realistic image of how a black hole would be perceived by the human eye.
+
+
+    <!--
+    <p>
+    <table border=0 width="98%">
+     <tr>
+     <td><img src="./xrb_sch.jpg" width="100%" alt="XRB schematic"></img>
+     <p style="font-size:14px"><i>Fig.1:</i>
+     Schematic of an X-ray binary. Matter from the companion star falls onto
+     the accretor via an accretion disk. The accretor is at the center of the 
+     disk. Not all the matter that spirals in falls onto the accretor, but a
+     small fraction sometimes escapes in the form of a jet.
+     <i>(Source: <a href="http://chandra.harvard.edu">http://chandra.harvard.edu/)</i></a>
+     </p>
+     </td>
+     <td>&nbsp;&nbsp;&nbsp</td>
+     <td><img src="./AqlX-1.lc.jpg" width="100%" alt="Aql lightcurve"></img>
+     <p style="font-size:14px"><i>Fig.2:</i>
+     Multi-wavelength long-term monitoring of Aquila X-1. From top to 
+     bottom: J-band, R-band light curves, 1.5–12 keV X-ray brightness 
+     measured by RXTE, 2-20 keV brightness from MAXI, and 15-50 keV 
+     brightness from Swift. The outburst epochs (periods of high 
+     activity) are evident.
+     </p>
+     </td>
+     </tr>
+    </table>
+    </p>
+    -->
+
+
+    <h4>Medium Title</h4>
+
+    <p>
+    <i>Small title:</i> 
+    ......
+    </p>
+
+
+
+    </div>
+
+    <center>
+    <table width="800">
+    <tr><td>
+
+    <div id="Scatter3D">
+    <table class='example'>
+     <tr>
+      <td><canvas id='canvas1' width='800' height='800'></canvas></td>
+     </tr>
+    </table>
+    </div>
+
+    <p style="font-size:14px">
+    An interactive 3D plot showing the trajectory of a light particle around black hole, assume black hole is at (0, 0, 0)
+    </p>
+    </td></tr>
+    </table>
+    </center>
+
+    <a href="https://www.google.com/">Back to main menu(demo right now just linked to google)</a>
+
+
+    <div>
+    <h4>References</h4>
+    <p>
+    ......
+    <!-- example of how to insert a link
+    <li>
+    <a href="http://adsabs.harvard.edu/abs/1989ApJ...345..245C">
+    Cardelli, J. A., Clayton, G. C., and Mathis, J. S., 1989, ApJ, 345, 245
+    </a></li>
+    -->
+    </p> 
+    </div>
+
+  </body>
+
+</html>
